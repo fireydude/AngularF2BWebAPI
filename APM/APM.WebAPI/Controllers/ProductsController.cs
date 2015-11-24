@@ -19,6 +19,14 @@ namespace APM.WebAPI.Controllers
             return productRepo.Retrieve();
         }
 
+        // GET: api/Products
+        public IEnumerable<Product> Get(string search)
+        {
+            var productRepo = new ProductRepository();
+            var products = productRepo.Retrieve();
+            return products.Where(p => p.ProductCode.Contains(search));
+        }
+
         // GET: api/Products/5
         public string Get(int id)
         {
