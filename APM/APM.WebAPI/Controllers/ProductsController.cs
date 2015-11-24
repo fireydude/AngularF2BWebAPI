@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.OData;
+using System.Web.Http.OData.Query;
 
 namespace APM.WebAPI.Controllers
 {
@@ -13,10 +15,11 @@ namespace APM.WebAPI.Controllers
     public class ProductsController : ApiController
     {
         // GET: api/Products
-        public IEnumerable<Product> Get()
+        [EnableQuery(PageSize = 50)]
+        public IQueryable<Product> Get()
         {
             var productRepo = new ProductRepository();
-            return productRepo.Retrieve();
+            return productRepo.Retrieve().AsQueryable();
         }
 
         // GET: api/Products
