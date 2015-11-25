@@ -12,7 +12,6 @@ using System.Web.Http.OData.Query;
 
 namespace APM.WebAPI.Controllers
 {
-    [EnableCors("http://localhost:8914", "*", "*")]
     public class ProductsController : ApiController
     {
         // GET: api/Products

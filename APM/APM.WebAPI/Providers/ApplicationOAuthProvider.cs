@@ -34,8 +34,8 @@ namespace APM.WebAPI.Providers
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
             // allow CORS by adding our client for chrome - DOES NOT WORK 
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin",
-                new[] { "http://localhost:8914" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin",
+            //    new[] { "http://localhost:8914" });
 
             if (user == null)
             {

@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using APM.WebAPI.Providers;
 using APM.WebAPI.Models;
+using Microsoft.Owin.Cors;
 
 namespace APM.WebAPI
 {
@@ -22,6 +23,9 @@ namespace APM.WebAPI
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            // allow CORS by adding our client for chrome
+            app.UseCors(CorsOptions.AllowAll);
+
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
